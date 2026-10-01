@@ -10,12 +10,11 @@ class App extends StatelessWidget {
 @override
 Widget build(BuildContext context) {
   return MaterialApp(
+    title: 'Sandwich Shop App',
     home: Scaffold(
-      appBar: AppBar(
-        title: const Text('Sandwich Shop'),
-      ),
-      body: const Center(
-        child: Text('Order your sandwich'),
+      appBar: AppBar(title: const Text('Sandwich Counter')),
+      body: Center(
+        child: OrderItemDisplay(5, 'Footlong'),
       ),
     ),
   );
@@ -25,7 +24,8 @@ class OrderItemDisplay extends StatelessWidget {
   final String itemType;
   final int quantity;
 
-  const OrderItemDisplay(this.quantity, this.itemType, {super.key});
+   // ignore: prefer_const_constructors_in_immutables
+  OrderItemDisplay(this.quantity, this.itemType, {super.key});
 
   @override
 Widget build(BuildContext context) {
