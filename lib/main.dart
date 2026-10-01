@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() {}
+void main() {
   runApp(const MyApp());
-
+}
 
 class App extends StatelessWidget {
   const App({super.key});
