@@ -22,7 +22,6 @@ class OrderScreen extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _OrderScreenState();
   }
 }
@@ -30,7 +29,18 @@ class _OrderScreenState extends State<OrderScreen> {
   int _quantity = 0;
 
   @override
-Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
+  void _increaseQuantity() {
+    if (_quantity < widget.maxQuantity) {
+    setState(() => _quantity++);
+  }
+}
+
+  void _decreaseQuantity() {
+    if (_quantity > 0) {
+     setState(() => _quantity--);
+  }
+}
   return Scaffold(
     appBar: AppBar(
       title: const Text('Sandwich Counter'),
@@ -47,11 +57,11 @@ Widget build(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: () => print('Add button pressed!'),
+                onPressed: _increaseQuantity,
                 child: const Text('Add'),
               ),
               ElevatedButton(
-                onPressed: () => print('Remove button pressed!'),
+                onPressed: _decreaseQuantity,
                 child: const Text('Remove'),
               ),
             ],
@@ -62,6 +72,7 @@ Widget build(BuildContext context) {
   );
   }
 }
+
 class OrderItemDisplay extends StatelessWidget {
   final String itemType;
   final int quantity;
