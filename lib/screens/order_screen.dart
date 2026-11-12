@@ -12,7 +12,9 @@ class OrderScreen extends StatefulWidget {
   });
 
   @override
-  State<OrderScreen> createState() => _OrderScreenState();
+  State<OrderScreen> createState() {
+    return _OrderScreenState();
+  }
 }
 
 class _OrderScreenState extends State<OrderScreen> {
@@ -43,27 +45,13 @@ class _OrderScreenState extends State<OrderScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             Image.asset(
               widget.sandwich.imagePath,
-              width: 180,
-              height: 180,
+              width: 200,
+              height: 150,
               fit: BoxFit.cover,
-            ),
-            const SizedBox(height: 20),
-
-            Text(
-              widget.sandwich.name,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            Text(
-              '£${widget.sandwich.price.toStringAsFixed(2)} each',
-              style: const TextStyle(fontSize: 18),
-            ),
+           ),
 
             const SizedBox(height: 20),
 
@@ -71,9 +59,7 @@ class _OrderScreenState extends State<OrderScreen> {
               _quantity,
               widget.sandwich.name,
             ),
-
-            const SizedBox(height: 20),
-
+            const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -87,16 +73,6 @@ class _OrderScreenState extends State<OrderScreen> {
                   child: const Text('Remove'),
                 ),
               ],
-            ),
-
-            const SizedBox(height: 20),
-
-            Text(
-              'Total: £${(_quantity * widget.sandwich.price).toStringAsFixed(2)}',
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
             ),
           ],
         ),
@@ -119,7 +95,6 @@ class OrderItemDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       '$quantity $itemType sandwich(es): ${'🥪' * quantity}',
-      textAlign: TextAlign.center,
     );
   }
 }
